@@ -1,20 +1,22 @@
-#é¢˜ç›®æè¿°,è®¡ç®—[1,n]ä¸­æœ‰å¤šå°‘ä¸ª1ï¼›
-#ä¸¾ä¾‹:[1,5]åªæœ‰ä¸€ä¸ª1:1ï¼›
-#[1,11]ä¸­æœ‰1,10,11ï¼Œä¸‰ä¸ªæ•°ä¸­ä¸€å…±æœ‰4ä¸ª1ï¼›
+#encoding:utf-8
+#ÌâÄ¿ÃèÊö,¼ÆËã[1,n]ÖĞÓĞ¶àÉÙ¸ö"1"£»
+#¾ÙÀı:[1,5]Ö»ÓĞÒ»¸ö1:1£»
+#[1,11]ÖĞÓĞ1,10,11£¬Èı¸öÊıÖĞÒ»¹²ÓĞ4¸ö1£»
 
-#æ–¹æ³•1ï¼šæ•´ä½“éå†
+#·½·¨1£ºÕûÌå±éÀú
 def getn(n):
   count = 0
   for x in range(1,n+1):
-      count += str(x).count("1")
+      if str(x).count("1"):
+         count += str(x).count("1")
   return count
 
-#print(getn(99))
+print(getn(99))
 
-#æ–¹æ³•2ï¼šæŒ‰ä½æ•°å¯»æ‰¾è§„å¾‹
-# å½“nä¸ºmä½æ•°æ—¶ï¼Œ
-# åˆ†åˆ«è€ƒè™‘æœ‰1,2,3...mä¸ª1æ—¶çš„æƒ…å†µ
-# å¯¹äº
+#·½·¨2£º°´Î»ÊıÑ°ÕÒ¹æÂÉ
+# µ±nÎªmÎ»ÊıÊ±£¬
+# ·Ö±ğ¿¼ÂÇÓĞ1,2,3...m¸ö1Ê±µÄÇé¿ö
+# ¶ÔÓÚ
 from itertools import combinations
 def getnweishu(n):
     count = 0
@@ -22,8 +24,7 @@ def getnweishu(n):
     for i in range(1,lenn):
         for j in range(1,i+1):
             combins = len(list(combinations(range(i),j)))
-            print(combins*9**(i-j),combins,i,j)
-            count += combins*9**(i-j)
+            #print(j*combins*9**(i-j),combins,j)
+            count += j*combins*9**(i-j)
     return count
-#print(getnweishu(100))
-        
+print(getnweishu(1000))
