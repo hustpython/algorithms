@@ -11,11 +11,11 @@ int Sum1s(int n)
     int HigherNum = 0;  
   
     while ( n/factor != 0)        //每次计算LowerNum CurrNum HigherNum的值  
-    {   cout <<'k';
+    {   
         LowerNum = n - (n/factor) * factor;  
         CurrNum = (n/factor) % 10;  
         HigherNum = n / (factor*10);  
-  
+        cout << LowerNum <<","<< CurrNum <<","<< HigherNum<<"," << endl;
         switch (CurrNum)  
         {  
         case 0:  
@@ -36,5 +36,5 @@ int Sum1s(int n)
   
 int  main()  
 {  
-    cout<<Sum1s(1000)<<endl;  
+    cout<<Sum1s(123)<<endl;  
 } 

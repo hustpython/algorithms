@@ -1,9 +1,9 @@
 #encoding:utf-8
-#ÌâÄ¿ÃèÊö,¼ÆËã[1,n]ÖĞÓĞ¶àÉÙ¸ö"1"£»
-#¾ÙÀı:[1,5]Ö»ÓĞÒ»¸ö1:1£»
-#[1,11]ÖĞÓĞ1,10,11£¬Èı¸öÊıÖĞÒ»¹²ÓĞ4¸ö1£»
+#é¢˜ç›®æè¿°,è®¡ç®—[1,n]ä¸­æœ‰å¤šå°‘ä¸ª"1"ï¼›
+#ä¸¾ä¾‹:[1,5]åªæœ‰ä¸€ä¸ª1:1ï¼›
+#[1,11]ä¸­æœ‰1,10,11ï¼Œä¸‰ä¸ªæ•°ä¸­ä¸€å…±æœ‰4ä¸ª1ï¼›
 
-#·½·¨1£ºÕûÌå±éÀú
+#æ–¹æ³•1ï¼šæ•´ä½“éå†
 def getn(n):
   count = 0
   for x in range(1,n+1):
@@ -11,20 +11,26 @@ def getn(n):
          count += str(x).count("1")
   return count
 
-print(getn(99))
+#print(getn(99))
 
-#·½·¨2£º°´Î»ÊıÑ°ÕÒ¹æÂÉ
-# µ±nÎªmÎ»ÊıÊ±£¬
-# ·Ö±ğ¿¼ÂÇÓĞ1,2,3...m¸ö1Ê±µÄÇé¿ö
-# ¶ÔÓÚ
-from itertools import combinations
+#æ–¹æ³•2ï¼šæŒ‰ä½æ•°å¯»æ‰¾è§„å¾‹
+# åˆ†åˆ«è€ƒè™‘æ¯ä¸€ä½ä¸º1çš„æƒ…å†µï¼Œç„¶ååŠ å¼ºæ¥
+# å½“å½“å‰ä½ä¸ºmæ—¶ï¼Œè¦è€ƒè™‘m-1ä½å’Œm+1ä½ä¸Šçš„æ•°å­—
+# è¿˜è¦æ ¹æ®mæ­¤æ—¶çš„æ•°å­—ï¼Œåˆ†=0ï¼Œ=1å’Œ>1åº”ç”¨ä¸åŒçš„å…¬å¼
+# å…¬å¼ä¸­æœ‰ä¸€ä¸ªfactorå°±æ˜¯ä¸åŒä½çš„æƒé‡
 def getnweishu(n):
     count = 0
-    lenn = len(str(n))
-    for i in range(1,lenn):
-        for j in range(1,i+1):
-            combins = len(list(combinations(range(i),j)))
-            #print(j*combins*9**(i-j),combins,j)
-            count += j*combins*9**(i-j)
+    factor = 1
+    while n//factor != 0:
+        LowerNum = n - (n//factor) * factor
+        CurrNum = (n//factor) % 10  
+        HigherNum = n // (factor*10)
+        if CurrNum == 0:
+            count += HigherNum * factor
+        elif CurrNum == 1:
+            count += HigherNum * factor + LowerNum +1
+        else:
+            count += (HigherNum +1)*factor
+        factor *= 10
     return count
-print(getnweishu(1000))
+print(getnweishu(123))
