@@ -1,0 +1,33 @@
+ #*
+ #* @Author: mxq 
+ #* @Date: 2019-02-16 19:44:44 
+ #* @Last Modified by:   mxq 
+ #* @Last Modified time: 2019-02-16 19:44:44 
+ #*
+# -*- coding: UTF-8 -*-
+
+# calculate cross region of two rectangles
+
+# #################
+# #               #
+# #      ################
+# #      # ???????#     #
+# #      # ?????? #     #
+# #################     #
+         #              #
+         ################
+
+def calculatecrossrect(r1,r2):
+    if r1[0] >= r1[1] or r1[2]>= r1[3] or r2[0] >= r2[1] or r2[2]>= r2[3]:# invalid rect
+        return -1
+    elif r1[1]<r2[0] or r1[3]<r2[2] or r1[0]>r1[1] or r1[2]>r2[3]: # no cross rect region
+        return 0
+    return abs(r1[1]-r2[0])*abs(r1[3]-r2[2])
+
+if __name__ == "__main__":
+    
+    r1 = [1,4,2,7] #xmin,xmax,ymin,ymax
+    r2 = [2,5,3,8]
+    res = calculatecrossrect(r1,r2)
+    print(res)
+
