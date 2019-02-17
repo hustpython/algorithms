@@ -2,7 +2,7 @@
 ===============================
 Legend using pre-defined labels
 ===============================
-
+by yzw
 Notice how the legend labels are defined with the plots!
 """
 # coding:utf-8
